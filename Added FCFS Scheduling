@@ -1,0 +1,74 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    int arrival[10], burst[10], waiting[10], turnaround[10], current_time = 0;
+    char pid[10][5];
+
+    printf("Enter number of processes: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("Enter Process ID: ");
+        scanf("%s", pid[i]);
+        printf("Enter Arrival Time: ");
+        scanf("%d", &arrival[i]);
+        printf("Enter Burst Time: ");
+        scanf("%d", &burst[i]);
+    }
+
+    printf("\nProcess\tArrival\tBurst\tWaiting\tTurnaround\n");
+
+    for (i = 0; i < n; i++) {
+        if (current_time < arrival[i]) {
+            current_time = arrival[i];
+        }
+        waiting[i] = current_time - arrival[i];
+        turnaround[i] = waiting[i] + burst[i];
+        current_time += burst[i];
+
+        printf("%s\t%d\t%d\t%d\t%d\n", pid[i], arrival[i], burst[i], waiting[i], turnaround[i]);
+    }
+
+    printf("\nGantt Chart:\n");
+    for (i = 0; i < n; i++) {
+        printf(" ");
+        for (j = 0; j < burst[i]; j++) {
+            printf("=");
+        }
+        printf("  ");  
+    }
+    printf("\n");
+
+   
+    for (i = 0; i < n; i++) {
+        printf("|");
+        printf(" %s ", pid[i]);
+        printf("| ");
+    }
+    printf("\n");
+
+   
+    for (i = 0; i < n; i++) {
+        printf(" ");
+        for (j = 0; j < burst[i]; j++) {
+            printf("=");
+        }
+        printf("  ");
+    }
+    printf("\n");
+
+
+    int time = 0;
+    printf("%d", time);
+    for (i = 0; i < n; i++) {
+        time += burst[i];
+        for (j = 0; j < burst[i] + 2; j++) {
+            printf(" ");
+        }
+        printf("%d", time);
+    }
+    printf("\n");
+
+    return 0;
+}

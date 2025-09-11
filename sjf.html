@@ -5,9 +5,9 @@
   <title>SJF Scheduling with Averages</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 20px;
-      background: linear-gradient(135deg, orange, black);
+      background: linear-gradient(135deg, #1e3c72, #2a5298); /* updated background */
       min-height: 100vh;
       color: #f0f0f0;
       text-align: center;
@@ -23,18 +23,18 @@
       font-size: 16px;
       font-weight: bold;
       color: #fff;
-      background: #333;
+      background: #0d253f;
       transition: transform 0.2s, background 0.3s;
     }
     button:hover {
-      background: #555;
+      background: #133b63;
       transform: scale(1.05);
     }
     table {
       border-collapse: collapse;
       margin: 20px auto;
       width: 80%;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.9);
       animation: fadeIn 1s ease-in;
     }
     th, td {
@@ -44,7 +44,7 @@
       color: #2c3e50;
     }
     th {
-      background: #555;
+      background: #0d253f;
       color: #fff;
     }
     .gantt {
@@ -65,10 +65,11 @@
       opacity: 0;
       animation: fadeInBlock 0.8s forwards;
     }
-    .P1 { background: #e17055; }
-    .P2 { background: #d63031; }
-    .P3 { background: #6c5ce7; }
-    .P4 { background: #fdcb6e; }
+    /* Updated block colors */
+    .P1 { background: #e74c3c; } /* red */
+    .P2 { background: #27ae60; } /* green */
+    .P3 { background: #3498db; } /* blue */
+    .P4 { background: #f39c12; } /* orange */
 
     @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
     @keyframes slideIn { from {transform: translateY(30px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
@@ -76,7 +77,7 @@
   </style>
 </head>
 <body>
-  <h1>✨ SJF Scheduling Demo with Averages</h1>
+  <h1>SJF Scheduling Demo with Averages</h1>
   <p><b>Processes:</b> P1(AT=0,BT=5), P2(AT=1,BT=3), P3(AT=2,BT=8), P4(AT=3,BT=6)</p>
 
   <button onclick="runSJF()">Run SJF</button>

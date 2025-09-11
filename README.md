@@ -25,13 +25,13 @@ This repository demonstrates multiple **CPU Scheduling Algorithms** implemented 
 
 ## 📂 Repository Structure  
 
-- `fcfs.c` → **Liya Reji’s FCFS** implementation in C  
+- `Added FCFS Scheduling` → **Liya Reji’s FCFS** implementation in C  
 - `fcfs.html` → **Rose Brijit’s FCFS** web-based implementation (HTML + JS)  
 - `sjf.html` → **Nowrin’s SJF** web-based implementation (HTML + JS)  
 - `roundrobin.html` → **Liya Reji’s Round Robin** web-based implementation (HTML + JS)  
-- `fcfs.png` → FCFS output screenshot  
-- `roundrobinoutput.png` → Round Robin output screenshot  
-- `fcfsop.pdf` → Documentation for FCFS  
+- `fcfs.png` →  **Liya Reji’s FCFS** output screenshot  
+- `roundrobinoutput.png` → **Liya Reji’s Round Robin** output screenshot  
+- `fcfsop.pdf` → **Rose Brijit’s FCFS** Output  
 - `README.md` → Project documentation  
 
 ---

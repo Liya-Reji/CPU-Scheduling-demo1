@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FCFS Scheduling Animation</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+padding: 20px;
+background: #f0f4f8;
+}
+h2 {
+text-align: center;
+}
+.legend {
+margin-top: 20px;
+font-size: 1em;
+background: #e3e3e3;
+padding: 10px;
+border-radius: 8px;
+}
+#table-area {
+margin: 30px auto 10px;
+width: max-content;
+background: #fff;
+border-radius: 10px;
+box-shadow: 0 2px 12px #ddd;
+padding: 20px;
+border: 1px solid #aaa;
+
+transition: opacity 0.7s;
+}
+table {
+border-collapse: collapse;
+width: 350px;
+margin: 0 auto;
+background: #fbfbfb;
+}
+th, td {
+border: 1px solid #aaa;
+padding: 10px 16px;
+text-align: center;
+}
+th {
+background: #e0e4f3;
+}
+.fadeout {
+opacity: 0;
+}
+#gantt {
+display: flex;
+align-items: center;
+margin-top: 30px;
+height: 80px;
+overflow-x: auto;
+border: 2px solid #444;
+background: #fff;
+border-radius: 10px;
+opacity: 0;
+
+transition: opacity 0.7s;
+}
+.process {
+min-width: 80px;
+height: 60px;
+margin: 0 4px;
+border-radius: 8px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+color: #fff;
+font-weight: bold;
+font-size: 1.2em;
+opacity: 0.5;
+transition: opacity 0.5s;
+box-shadow: 0 2px 8px #ccc;
+border: 2px solid #666;
+}
+.active {
+opacity: 1;
+border-color: #007bff;
+box-shadow: 0 4px 16px #007bff60;
+}
+.arrival {
+font-size: 0.8em;
+color: #222;
+margin-top: 3px;
+font-weight: normal;
+
+}
+#timeline {
+display: flex;
+margin-top: 10px;
+margin-left: 12px;
+font-size: 0.95em;
+color: #333;
+opacity: 0;
+transition: opacity 0.7s;
+}
+.tick {
+min-width: 80px;
+text-align: center;
+}
+#show-exec {
+display: block;
+margin: 30px auto 0;
+padding: 12px 30px;
+background: #2196f3;
+color: #fff;
+border: none;
+font-size: 1.1em;
+font-weight: bold;
+border-radius: 7px;
+cursor: pointer;
+box-shadow: 0 2px 8px #2196f380;
+transition: background 0.2s;
+}
+#show-exec:hover {
+
+background: #1565c0;
+}
+</style>
+</head>
+<body>
+<h2>FCFS (First-Come, First-Served) Scheduling Animation</h2>
+<div class="legend">
+<strong>How FCFS works:</strong> Processes are scheduled in the order they arrive. Each process
+waits for the previous one to finish.
+</div>
+<div id="table-area">
+<table>
+<tr>
+<th>Process</th>
+<th>Arrival Time</th>
+<th>Burst Time</th>
+</tr>
+<tr><td>P1</td><td>0</td><td>3</td></tr>
+<tr><td>P2</td><td>2</td><td>4</td></tr>
+<tr><td>P3</td><td>4</td><td>2</td></tr>
+<tr><td>P4</td><td>6</td><td>3</td></tr>
+</table>
+</div>
+<button id="show-exec">Show FCFS Execution</button>
+<div id="gantt"></div>
+<div id="timeline"></div>
+<script>
+// FCFS sample data
+const processes = [
+
+{ id: 'P1', arrival: 0, burst: 3, color: '#f44336' },
+{ id: 'P2', arrival: 2, burst: 4, color: '#4caf50' },
+{ id: 'P3', arrival: 4, burst: 2, color: '#2196f3' },
+{ id: 'P4', arrival: 6, burst: 3, color: '#ff9800' }
+];
+processes.sort((a, b) => a.arrival - b.arrival);
+
+let currentTime = 0;
+processes.forEach((p, i) => {
+p.start = Math.max(currentTime, p.arrival);
+p.end = p.start + p.burst;
+currentTime = p.end;
+});
+
+// Render Gantt chart (hidden at first)
+const gantt = document.getElementById('gantt');
+processes.forEach((p, i) => {
+const block = document.createElement('div');
+block.className = 'process';
+block.style.background = p.color;
+block.style.width = (p.burst * 80) + 'px';
+block.id = 'proc-' + i;
+block.innerHTML = `
+<div>${p.id}</div>
+<div class="arrival">Arr: ${p.arrival}, Burst: ${p.burst}</div>
+`;
+gantt.appendChild(block);
+});
+// Render timeline (hidden at first)
+
+const timeline = document.getElementById('timeline');
+let ticks = [];
+processes.forEach((p, i) => {
+if (i === 0) ticks.push(p.start);
+ticks.push(p.end);
+});
+for (let t of ticks) {
+const tick = document.createElement('div');
+tick.className = 'tick';
+tick.textContent = t;
+timeline.appendChild(tick);
+}
+
+// Animation logic
+let idx = 0;
+function animateFCFS() {
+if (idx > 0) {
+document.getElementById('proc-' + (idx - 1)).classList.remove('active');
+}
+if (idx < processes.length) {
+document.getElementById('proc-' + idx).classList.add('active');
+idx++;
+setTimeout(animateFCFS, processes[idx - 1].burst * 800);
+}
+}
+
+// Button event: hide table and show animation
+document.getElementById('show-exec').onclick = function() {
+document.getElementById('table-area').classList.add('fadeout');
+
+document.getElementById('show-exec').style.display = 'none';
+setTimeout(function() {
+document.getElementById('table-area').style.display = 'none';
+gantt.style.opacity = 1;
+timeline.style.opacity = 1;
+setTimeout(animateFCFS, 800);
+}, 700);
+};
+</script>
+</body>
+</html>

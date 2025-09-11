@@ -1,45 +1,47 @@
-# CPU Scheduling Demo
+CPU Scheduling Demo
+This repository contains a demonstration of classic CPU scheduling algorithms. The project uses a mix of programming languages and web technologies to provide both code implementations and interactive visualizations.
 
-A web-based simulation demonstrating various CPU scheduling algorithms including First-Come-First-Served (FCFS), Shortest Job First (SJF), and Round Robin.
+ About Scheduling Algorithms
+FCFS (First-Come, First-Served): A non-preemptive algorithm that executes processes in the order they arrive.
 
-## Features
+SJF (Shortest Job First): A non-preemptive algorithm that prioritizes the process with the smallest burst time.
 
-- **FCFS Scheduling**: First-Come-First-Served algorithm implementation
-- **SJF Scheduling**: Shortest Job First algorithm implementation  
-- **Round Robin Scheduling**: Time-sliced scheduling with customizable quantum
-- **Visual Output**: Graphical representation of scheduling outcomes
-- **PDF Documentation**: Detailed explanation of algorithms
+Round Robin: A preemptive algorithm that assigns a fixed time quantum to each process, allowing for fair CPU time distribution.
 
-## Files Included
+ Repository Contents
+File Name	Description
+fcfs.c	C implementation of the FCFS algorithm.
+fcfs.html	Interactive web page for the FCFS demo.
+sjf.html	Interactive web page for the SJF demo.
+roundrobin.html	Interactive web page for the Round Robin demo.
+fcfs.png	Screenshot of the FCFS demo output.
+roundrobinoutput.png	Screenshot of the Round Robin demo output.
+fcfsop.pdf	Documentation or output for the FCFS algorithm.
+README.md	This documentation file.
 
-- `fcfs.html` - FCFS scheduling implementation
-- `sjf.html` - SJF scheduling implementation
-- `roundrobin.html` - Round Robin scheduling implementation
-- `fcfs.png` - Example output of FCFS scheduling
-- `roundrobinoutput.png` - Example output of Round Robin scheduling
-- `fcfsop.pdf` - Documentation on FCFS scheduling
-- `README.md` - Project documentation
+Export to Sheets
+ Contributions
+This project was a collaborative effort by three contributors.
 
-## How to Use
+Liya Reji
 
-1. Clone or download the repository
-2. Open any of the HTML files in a web browser
-3. Input process details (arrival time, burst time, etc.)
-4. View the scheduling simulation and results
+Authored the FCFS algorithm in C.
 
-## Algorithms Explained
+Authored the Round Robin algorithm.
 
-### FCFS (First-Come-First-Served)
-Non-preemptive scheduling where processes are executed in the order of their arrival.
+Nowrin
 
-### SJF (Shortest Job First)
-Schedules processes with the smallest burst time first, minimizing average waiting time.
+Authored the SJF algorithm.
 
-### Round Robin
-Preemptive scheduling where each process gets a fixed time unit (quantum) in cyclic order.
+Rose Brijit
 
-## Contributors
+Designed and created the fcfs.html web page.
 
-## License
+🚀 How to Run
+Since the demos are web-based, you can run them directly in a browser.
 
-This project is open source and available under the MIT License
+Clone the repository to your local machine.
+
+Navigate to the repository folder.
+
+Open the desired .html file (e.g., fcfs.html, sjf.html) in your web browser.

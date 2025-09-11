@@ -81,3 +81,36 @@ This repository demonstrates multiple **CPU Scheduling Algorithms** implemented 
 ```bash
 gcc fcfs.c -o fcfs
 ./fcfs
+Rose Brijit’s FCFS (Web)
+
+Open fcfs.html in any browser.
+
+Nowrin’s SJF (Web)
+
+Open sjf.html in any browser.
+
+Liya Reji’s Round Robin (Web)
+
+Open roundrobin.html in any browser.
+
+🎯 Summary
+
+This project demonstrates CPU Scheduling Algorithms using both console (C) and interactive web (HTML + JS) approaches:
+
+Liya Reji → FCFS in C + Round Robin in Web.
+
+Rose Brijit → FCFS Web implementation.
+
+Nowrin → SJF Web implementation.
+
+Together, these implementations show how scheduling can be explored in different environments—from classic C programs to browser-based interactive simulations.
+
+👩‍🏫 Team Members
+
+Liya Reji – FCFS (C) + Round Robin (HTML/JS)
+
+Rose Brijit – FCFS (HTML/JS)
+
+Nowrin – SJF (HTML/JS)
+
+✨ This project is a group effort to learn and visualize CPU scheduling in multiple ways.
